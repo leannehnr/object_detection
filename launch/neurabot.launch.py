@@ -4,6 +4,13 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
+    nav_node = Node(
+        package='object_detection',
+        executable='nav_autonome',
+        name='nav_node',
+        output='screen'
+    )
+
     detection_node = Node(
         package='object_detection',
         executable='detection_node',
@@ -26,6 +33,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        nav_node,
         detection_node,
         decision_node,
         action_node

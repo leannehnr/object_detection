@@ -31,6 +31,7 @@ setup(
             'detection_node = object_detection.detection_node:main',
             'decision_node = object_detection.decision_node:main',
             'action_node = object_detection.action_node:main',
+            'nav_autonome = object_detection.nav_autonome:main',
         ],
     },
 )

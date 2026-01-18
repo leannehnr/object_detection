@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Point
+from std_msgs.msg import String
 
 from coppeliasim_zmqremoteapi_client import RemoteAPIClient
 import numpy as np
@@ -123,16 +124,16 @@ class DetectionNode(Node):
         msg = String()
         if pos_red:
             x, y, z = float(pos_red[0]), float(pos_red[1]), 0.0
-            msg = f'red {x} {y} {z}'
+            msg.data = f'red {x} {y} {z}'
             self.pub.publish(msg)
 
         if pos_blue:
             x, y, z = float(pos_blue[0]), float(pos_blue[1]), 0.0
-            msg = f'blue {x} {y} {z}'
+            msg.data = f'blue {x} {y} {z}'
             self.pub.publish(msg)
 
         if not pos_blue and not pos_red: 
-            msg = f'wall {x} {y} {z}'
+            msg.data = f'wall {x} {y} {z}'
             self.pub.publish(msg)
 
         # Show camera
